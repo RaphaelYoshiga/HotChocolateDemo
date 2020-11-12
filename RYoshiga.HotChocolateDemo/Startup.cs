@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -15,8 +16,13 @@ namespace RYoshiga.HotChocolateDemo
         {
             services.AddGraphQL(sp => SchemaBuilder.New()
                 .AddQueryType<Query>()
+                .AddType<CustomerType>()
+                .AddType<ItemType>()
                 .AddServices(sp)
                 .Create());
+
+            services.AddDataLoader<ProductsByIdDataLoader>();
+            services.AddTransient<IProfileRepository, ProfileRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,10 +37,5 @@ namespace RYoshiga.HotChocolateDemo
 
             app.UseGraphQL();
         }
-    }
-
-    public class Query
-    {
-        public string Hello() => "world";
     }
 }
