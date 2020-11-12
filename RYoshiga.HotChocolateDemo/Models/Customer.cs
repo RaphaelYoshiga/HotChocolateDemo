@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RYoshiga.HotChocolateDemo
+namespace RYoshiga.HotChocolateDemo.Models
 {
     public class Customer
     {

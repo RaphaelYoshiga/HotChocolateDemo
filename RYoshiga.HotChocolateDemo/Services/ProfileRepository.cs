@@ -1,4 +1,6 @@
-namespace RYoshiga.HotChocolateDemo
+using RYoshiga.HotChocolateDemo.Models;
+
+namespace RYoshiga.HotChocolateDemo.Services
 {
     public interface IProfileRepository
     {

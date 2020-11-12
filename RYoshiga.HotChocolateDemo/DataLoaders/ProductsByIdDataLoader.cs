@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate.DataLoader;
+using RYoshiga.HotChocolateDemo.Models;
 
-namespace RYoshiga.HotChocolateDemo
+namespace RYoshiga.HotChocolateDemo.DataLoaders
 {
     public class ProductsByIdDataLoader : BatchDataLoader<Guid, Product>
     {

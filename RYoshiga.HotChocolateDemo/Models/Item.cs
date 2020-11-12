@@ -1,6 +1,6 @@
 using System;
 
-namespace RYoshiga.HotChocolateDemo
+namespace RYoshiga.HotChocolateDemo.Models
 {
     public class Item
     {

@@ -2,8 +2,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
+using RYoshiga.HotChocolateDemo.DataLoaders;
+using RYoshiga.HotChocolateDemo.Models;
 
-namespace RYoshiga.HotChocolateDemo
+namespace RYoshiga.HotChocolateDemo.QueryTypes
 {
     public class ItemType : ObjectType<Item>
     {

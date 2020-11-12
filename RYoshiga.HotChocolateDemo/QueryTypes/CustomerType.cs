@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate.Types;
+using RYoshiga.HotChocolateDemo.Models;
 
-namespace RYoshiga.HotChocolateDemo
+namespace RYoshiga.HotChocolateDemo.QueryTypes
 {
     public class CustomerType : ObjectType<Customer>
     {
