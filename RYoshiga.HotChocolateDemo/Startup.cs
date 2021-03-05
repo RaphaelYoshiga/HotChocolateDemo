@@ -1,13 +1,9 @@
-using System.Collections.ObjectModel;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RYoshiga.HotChocolateDemo.DataLoaders;
-using RYoshiga.HotChocolateDemo.QueryTypes;
-using RYoshiga.HotChocolateDemo.Services;
 
 namespace RYoshiga.HotChocolateDemo
 {
@@ -17,15 +13,11 @@ namespace RYoshiga.HotChocolateDemo
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGraphQL(sp => SchemaBuilder.New()
-                .AddQueryType<Query>()
-                .AddType<CustomerType>()
-                .AddType<ItemType>()
-                .AddServices(sp)
-                .Create());
+            var graphQl = services
+                .AddGraphQLServer();
 
-            services.AddDataLoader<ProductsByIdDataLoader>();
-            services.AddTransient<IProfileRepository, ProfileRepository>();
+            Ioc.RegisterGraphDependencies(graphQl);
+            Ioc.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,10 +27,9 @@ namespace RYoshiga.HotChocolateDemo
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UsePlayground();
-
-            app.UseGraphQL();
+            app.UseRouting();
+            // routing area
+            app.UseEndpoints(x => x.MapGraphQL());
         }
     }
 }

@@ -15,7 +15,6 @@ namespace RYoshiga.HotChocolateDemo.QueryTypes
                 .Field(t => t.Product)
                 .ResolveWith<ProductResolver>(t => t.GetProductAsync(default!, default!, default!, default));
         }
-
         private class ProductResolver
         {
             public async Task<Product> GetProductAsync(

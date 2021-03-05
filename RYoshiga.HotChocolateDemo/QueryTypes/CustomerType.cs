@@ -15,45 +15,44 @@ namespace RYoshiga.HotChocolateDemo.QueryTypes
                 .Field(t => t.Orders)
                 .ResolveWith<OrderResolver>(t => t.GetSessionsAsync(default!, default));
         }
-
-        private class OrderResolver
+    }
+    public class OrderResolver
+    {
+        public async Task<IEnumerable<Order>> GetSessionsAsync(
+            Customer customer,
+            CancellationToken cancellationToken)
         {
-            public async Task<IEnumerable<Order>> GetSessionsAsync(
-                Customer customer,
-                CancellationToken cancellationToken)
+            return await Task.FromResult(new List<Order>()
             {
-                return await Task.FromResult(new List<Order>()
+                new Order
                 {
-                    new Order
+                    Total = 864.99m,
+                    Items = new List<Item>
                     {
-                        Total = 864.99m,
-                        Items = new List<Item>
+                        new Item
                         {
-                            new Item
-                            {
-                                UnitCost = 500.99m,
-                                ProductId = Demo.ProductId,
-                                Quantity = 1
-                            },
-                            new Item{
-                                UnitCost = 99,
-                                ProductId = Demo.ProductId2,
-                                Quantity = 1
-                            },
-                            new Item{
-                                UnitCost = 55,
-                                ProductId = Demo.ProductId3,
-                                Quantity = 3
-                            },
-                            new Item{
-                                UnitCost = 25,
-                                ProductId = Demo.ProductId4,
-                                Quantity = 4
-                            }
+                            UnitCost = 500.99m,
+                            ProductId = Demo.ProductId,
+                            Quantity = 1
+                        },
+                        new Item{
+                            UnitCost = 99,
+                            ProductId = Demo.ProductId2,
+                            Quantity = 1
+                        },
+                        new Item{
+                            UnitCost = 55,
+                            ProductId = Demo.ProductId3,
+                            Quantity = 3
+                        },
+                        new Item{
+                            UnitCost = 25,
+                            ProductId = Demo.ProductId4,
+                            Quantity = 4
                         }
                     }
-                }.AsEnumerable());
-            }
+                }
+            }.AsEnumerable());
         }
     }
 }

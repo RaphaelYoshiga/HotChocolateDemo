@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RYoshiga.HotChocolateDemo", "RYoshiga.HotChocolateDemo\RYoshiga.HotChocolateDemo.csproj", "{CE8C155F-24F2-451D-8C5F-90D8856AD268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RYoshiga.HotChocolateDemo", "RYoshiga.HotChocolateDemo\RYoshiga.HotChocolateDemo.csproj", "{CE8C155F-24F2-451D-8C5F-90D8856AD268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RYoshiga.HotChocolateDemo.Specs", "RYoshiga.HotChocolateDemo.Specs\RYoshiga.HotChocolateDemo.Specs.csproj", "{E0A91C8E-DBF0-42F8-8380-24987CE682BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CE8C155F-24F2-451D-8C5F-90D8856AD268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE8C155F-24F2-451D-8C5F-90D8856AD268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8C155F-24F2-451D-8C5F-90D8856AD268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0A91C8E-DBF0-42F8-8380-24987CE682BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A91C8E-DBF0-42F8-8380-24987CE682BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A91C8E-DBF0-42F8-8380-24987CE682BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A91C8E-DBF0-42F8-8380-24987CE682BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

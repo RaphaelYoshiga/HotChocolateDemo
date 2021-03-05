@@ -6,8 +6,6 @@ namespace RYoshiga.HotChocolateDemo.QueryTypes
 {
     public class Query
     {
-        public string Hello() => "world";
-
         public Customer GetProfile([Service]IProfileRepository repository) => repository.GetProfile();
 
     }

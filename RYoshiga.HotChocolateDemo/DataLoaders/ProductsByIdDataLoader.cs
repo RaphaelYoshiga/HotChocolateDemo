@@ -1,30 +1,32 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GreenDonut;
 using HotChocolate.DataLoader;
 using RYoshiga.HotChocolateDemo.Models;
-using RYoshiga.HotChocolateDemo.QueryTypes;
 
 namespace RYoshiga.HotChocolateDemo.DataLoaders
 {
+    public interface IProductRepository
+    {
+        Dictionary<Guid, Product> GetProducts(IReadOnlyList<Guid> keys);
+    }
+
     public class ProductsByIdDataLoader : BatchDataLoader<Guid, Product>
     {
+        private readonly IProductRepository _productRepository;
+        public ProductsByIdDataLoader(IProductRepository productRepository, IBatchScheduler schedule) : base(schedule)
+        {
+            _productRepository = productRepository;
+        }
+
         protected override async Task<IReadOnlyDictionary<Guid, Product>> LoadBatchAsync(
             IReadOnlyList<Guid> keys,
             CancellationToken cancellationToken)
         {
-            var products = new Dictionary<Guid, Product>
-            {
-                {Demo.ProductId, new Product {Name = "PS5"}},
-                {Demo.ProductId2, new Product {Name = "Headset"}},
-                {Demo.ProductId3, new Product {Name = "Controller"}},
-                {Demo.ProductId4, new Product {Name = "Assorted Game"}}
-            };
-
-            var result = keys.ToDictionary(key => key, key => products[key]);
-            return await Task.FromResult(result);
+            var productsDictionary = _productRepository.GetProducts(keys);
+            return await Task.FromResult(productsDictionary);
         }
     }
 }
