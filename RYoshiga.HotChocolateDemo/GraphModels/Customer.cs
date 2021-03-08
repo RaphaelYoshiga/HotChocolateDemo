@@ -9,14 +9,14 @@ namespace RYoshiga.HotChocolateDemo.GraphModels
 {
     public class Customer
     {
-        public Guid UserId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public Task<IEnumerable<Order>> Orders([Service]IOrderRepository orderRepository, [Parent] Customer customer, CancellationToken cancellationToken)
+        public Task<IEnumerable<Order>> Orders([Service]IOrderRepository orderRepository, CancellationToken cancellationToken)
         {
-            return orderRepository.GetOrderBy(customer.UserId, cancellationToken);
+            return orderRepository.GetOrderBy(Id, cancellationToken);
         }
     }
 }

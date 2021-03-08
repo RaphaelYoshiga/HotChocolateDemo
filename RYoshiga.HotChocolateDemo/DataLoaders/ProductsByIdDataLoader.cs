@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 using GreenDonut;
 using HotChocolate.DataLoader;
 using RYoshiga.HotChocolateDemo.GraphModels;
+using RYoshiga.HotChocolateDemo.Services;
 
 namespace RYoshiga.HotChocolateDemo.DataLoaders
 {
-    public interface IProductRepository
-    {
-        Dictionary<Guid, Product> GetProducts(IReadOnlyList<Guid> keys);
-    }
-
-    public class ProductsByIdDataLoader : BatchDataLoader<Guid, Product>
+    public class ProductsByIdDataLoader : BatchDataLoader<int, Product>
     {
         private readonly IProductRepository _productRepository;
         public ProductsByIdDataLoader(IProductRepository productRepository, IBatchScheduler schedule) : base(schedule)
@@ -21,8 +17,8 @@ namespace RYoshiga.HotChocolateDemo.DataLoaders
             _productRepository = productRepository;
         }
 
-        protected override async Task<IReadOnlyDictionary<Guid, Product>> LoadBatchAsync(
-            IReadOnlyList<Guid> keys,
+        protected override async Task<IReadOnlyDictionary<int, Product>> LoadBatchAsync(
+            IReadOnlyList<int> keys,
             CancellationToken cancellationToken)
         {
             var productsDictionary = _productRepository.GetProducts(keys);

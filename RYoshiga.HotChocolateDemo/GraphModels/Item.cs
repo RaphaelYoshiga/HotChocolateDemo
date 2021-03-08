@@ -10,7 +10,8 @@ namespace RYoshiga.HotChocolateDemo.GraphModels
     {
         public int Quantity { get; set; }
         public decimal UnitCost { get; set; }
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
+        public int OrderId { get; set; }
 
         public async Task<Product> GetProductAsync(
             [DataLoader]ProductsByIdDataLoader productById,
