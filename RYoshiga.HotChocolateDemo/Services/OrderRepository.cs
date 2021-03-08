@@ -10,15 +10,13 @@ namespace RYoshiga.HotChocolateDemo.Services
 {
     public interface IOrderRepository
     {
-        Task<IEnumerable<Order>> GetOrderBy(
-            Customer customer,
+        Task<IEnumerable<Order>> GetOrderBy(Guid customerId,
             CancellationToken cancellationToken);
     }
 
     public class OrderRepository : IOrderRepository
     {
-        public async Task<IEnumerable<Order>> GetOrderBy(
-            Customer customer,
+        public async Task<IEnumerable<Order>> GetOrderBy(Guid customerId,
             CancellationToken cancellationToken)
         {
             return await Task.FromResult(new List<Order>()

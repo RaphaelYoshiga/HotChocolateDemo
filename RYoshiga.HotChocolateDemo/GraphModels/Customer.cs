@@ -16,7 +16,7 @@ namespace RYoshiga.HotChocolateDemo.GraphModels
 
         public Task<IEnumerable<Order>> Orders([Service]IOrderRepository orderRepository, [Parent] Customer customer, CancellationToken cancellationToken)
         {
-            return orderRepository.GetOrderBy(customer, cancellationToken);
+            return orderRepository.GetOrderBy(customer.UserId, cancellationToken);
         }
     }
 }
