@@ -171,60 +171,12 @@ namespace RYoshiga.HotChocolateDemo.Specs
                 expectedItems[i].ShouldMatch(actual);
             }
         }
-    }
 
-    public class ItemExpectedResponse
-    {
-        public string ProductName { get; set; }
-        public int Quantity { get; set; }
-        public decimal UnitCost { get; set; }
-
-        public void ShouldMatch(ItemResponse actual)
+        [Then(@"we should have called the products query only once")]
+        public void ThenWeShouldHaveCalledTheProductsQueryOnlyOnce()
         {
-            actual.Product.Name.Should().Be(ProductName);
-            actual.Quantity.Should().Be(Quantity);
-            actual.UnitCost.Should().Be(UnitCost);
+            _productsRepositoryStub.VerifyCalledOnlyXTimes(1);
         }
-    }
 
-    public class Profile
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
-        public List<OrderResponse> Orders { get; set; }
-        public int Id { get; set; }
-    }
-
-    public class OrderResponse
-    {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Total  { get; set; }
-
-        public List<ItemResponse> Items { get; set; }
-    }
-
-    public class ItemResponse
-    {
-        public decimal UnitCost { get; set; }
-        public int Quantity { get; set; }
-
-        public ProductResponse Product { get; set; }
-    }
-
-    public class ProductResponse
-    {
-        public string Name { get; set; }
-    }
-
-    public class Data
-    {
-        public Profile profile { get; set; }
-    }
-
-    public class RootResponse
-    {
-        public Data data { get; set; }
     }
 }
