@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RYoshiga.HotChocolateDemo.DataLoaders;
-using RYoshiga.HotChocolateDemo.Models;
+using RYoshiga.HotChocolateDemo.GraphModels;
 using RYoshiga.HotChocolateDemo.QueryTypes;
 
 namespace RYoshiga.HotChocolateDemo.Services

@@ -7,6 +7,7 @@ using RYoshiga.HotChocolateDemo.Services;
 using Xunit;
 using Moq;
 using Newtonsoft.Json;
+using RYoshiga.HotChocolateDemo.GraphModels;
 using Shouldly;
 
 namespace RYoshiga.HotChocolateDemo.Specs
@@ -17,8 +18,8 @@ namespace RYoshiga.HotChocolateDemo.Specs
         public async Task TestProfile()
         {
             var executorBuilder = GetRequestExecutorFromIoc();
-            var profileRepositoryMock = new Mock<IProfileRepository>();
-            var customer = new Models.Customer()
+            var profileRepositoryMock = new Mock<IProfileService>();
+            var customer = new Customer()
             {
                 FirstName = "Mega",
                 LastName = "Test"
@@ -26,7 +27,7 @@ namespace RYoshiga.HotChocolateDemo.Specs
             profileRepositoryMock.Setup(p => p.GetProfile())
                 .Returns(customer);
 
-            executorBuilder.Services.AddSingleton<IProfileRepository>(profileRepositoryMock.Object);
+            executorBuilder.Services.AddSingleton<IProfileService>(profileRepositoryMock.Object);
             var executor = await executorBuilder.BuildRequestExecutorAsync();
 
             var result = await executor.ExecuteAsync(@"{ profile { firstName lastName} }");

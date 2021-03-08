@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GreenDonut;
 using HotChocolate.DataLoader;
-using RYoshiga.HotChocolateDemo.Models;
+using RYoshiga.HotChocolateDemo.GraphModels;
 
 namespace RYoshiga.HotChocolateDemo.DataLoaders
 {

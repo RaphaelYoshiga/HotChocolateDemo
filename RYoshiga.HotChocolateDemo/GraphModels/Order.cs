@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RYoshiga.HotChocolateDemo.Models
+namespace RYoshiga.HotChocolateDemo.GraphModels
 {
     public class Order
     {

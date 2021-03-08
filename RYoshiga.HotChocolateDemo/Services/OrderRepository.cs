@@ -1,24 +1,23 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using HotChocolate.Types;
-using RYoshiga.HotChocolateDemo.Models;
+using RYoshiga.HotChocolateDemo.GraphModels;
+using RYoshiga.HotChocolateDemo.QueryTypes;
 
-namespace RYoshiga.HotChocolateDemo.QueryTypes
+namespace RYoshiga.HotChocolateDemo.Services
 {
-    public class CustomerType : ObjectType<Customer>
+    public interface IOrderRepository
     {
-        protected override void Configure(IObjectTypeDescriptor<Customer> descriptor)
-        {
-            descriptor
-                .Field(t => t.Orders)
-                .ResolveWith<OrderResolver>(t => t.GetSessionsAsync(default!, default));
-        }
+        Task<IEnumerable<Order>> GetOrderBy(
+            Customer customer,
+            CancellationToken cancellationToken);
     }
-    public class OrderResolver
+
+    public class OrderRepository : IOrderRepository
     {
-        public async Task<IEnumerable<Order>> GetSessionsAsync(
+        public async Task<IEnumerable<Order>> GetOrderBy(
             Customer customer,
             CancellationToken cancellationToken)
         {
@@ -26,6 +25,7 @@ namespace RYoshiga.HotChocolateDemo.QueryTypes
             {
                 new Order
                 {
+                    Date = DateTime.Now.AddDays(-93),
                     Total = 864.99m,
                     Items = new List<Item>
                     {
@@ -56,4 +56,3 @@ namespace RYoshiga.HotChocolateDemo.QueryTypes
         }
     }
 }
-

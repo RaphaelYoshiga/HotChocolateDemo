@@ -1,4 +1,4 @@
-namespace RYoshiga.HotChocolateDemo.Models
+namespace RYoshiga.HotChocolateDemo.GraphModels
 {
     public class Product
     {

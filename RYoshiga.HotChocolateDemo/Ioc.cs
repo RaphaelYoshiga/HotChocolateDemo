@@ -10,7 +10,8 @@ namespace RYoshiga.HotChocolateDemo
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddTransient<IProfileRepository, ProfileRepository>();
+            services.AddTransient<IProfileService, ProfileService>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
         }
 
@@ -18,8 +19,6 @@ namespace RYoshiga.HotChocolateDemo
         {
             graphQl
                 .AddQueryType<Query>()
-                .AddType<CustomerType>()
-                .AddType<ItemType>()
                 .AddDataLoader<ProductsByIdDataLoader>();
         }
     }
