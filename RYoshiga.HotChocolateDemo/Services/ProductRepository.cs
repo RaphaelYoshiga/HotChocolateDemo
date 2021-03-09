@@ -8,12 +8,12 @@ namespace RYoshiga.HotChocolateDemo.Services
 {
     public interface IProductRepository
     {
-        Dictionary<int, Product> GetProducts(IReadOnlyList<int> keys);
+        Dictionary<int, Product> ProductsBy(IReadOnlyList<int> keys);
     }
 
     public class ProductRepository : IProductRepository
     {
-        public Dictionary<int, Product> GetProducts(IReadOnlyList<int> keys)
+        public Dictionary<int, Product> ProductsBy(IReadOnlyList<int> keys)
         {
             var products = new Dictionary<int, Product>
             {

@@ -12,6 +12,7 @@ namespace RYoshiga.HotChocolateDemo
         {
             services.AddTransient<IProfileService, ProfileService>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
         }
 

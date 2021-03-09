@@ -72,7 +72,6 @@ namespace RYoshiga.HotChocolateDemo.Specs
         public async Task WhenIRequestTheGraphQueryWithTheOrdersForTheCurrentUser()
         {
             var executorBuilder = GetRequestExecutorFromIoc();
-            
 
             executorBuilder.Services.AddSingleton<IProfileService>(_profileServiceMock.Object);
             executorBuilder.Services.AddSingleton<IOrderRepository>(_orderRepositoryStub);

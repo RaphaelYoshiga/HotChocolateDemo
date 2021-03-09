@@ -23,8 +23,9 @@ namespace RYoshiga.HotChocolateDemo.Services
             {
                 new Order
                 {
+                    Id = 1,
                     Date = DateTime.Now.AddDays(-93),
-                    Total = 864.99m,
+                    Total = 50,
                 }
             }.AsEnumerable());
         }

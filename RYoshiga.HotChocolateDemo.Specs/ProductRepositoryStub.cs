@@ -10,7 +10,7 @@ namespace RYoshiga.HotChocolateDemo.Specs
     {
         private int _readCount = 0;
         private readonly Dictionary<int, Product> _productsById = new Dictionary<int, Product>();
-        public Dictionary<int, Product> GetProducts(IReadOnlyList<int> keys)
+        public Dictionary<int, Product> ProductsBy(IReadOnlyList<int> keys)
         {
             _readCount++;
             return keys.ToDictionary(key => key, key => _productsById[key]);

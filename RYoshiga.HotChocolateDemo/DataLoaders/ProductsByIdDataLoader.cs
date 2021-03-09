@@ -21,7 +21,7 @@ namespace RYoshiga.HotChocolateDemo.DataLoaders
             IReadOnlyList<int> keys,
             CancellationToken cancellationToken)
         {
-            var productsDictionary = _productRepository.GetProducts(keys);
+            var productsDictionary = _productRepository.ProductsBy(keys);
             return await Task.FromResult(productsDictionary);
         }
     }
